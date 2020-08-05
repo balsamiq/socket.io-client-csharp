@@ -49,8 +49,8 @@ namespace SocketIOClient.WebSocketClient
             //_ws.Options.ClientCertificates.Add(cert);
             _connectionToken = new CancellationTokenSource();
             await _ws.ConnectAsync(uri, _connectionToken.Token);
-            await Task.Factory.StartNew(ListenAsync, _connectionToken.Token);
-            await Task.Factory.StartNew(ListenStateAsync, _connectionToken.Token);
+            await Task.Run(ListenAsync, _connectionToken.Token);
+            await Task.Run(ListenStateAsync, _connectionToken.Token);
         }
 
         public virtual System.Net.WebSockets.ClientWebSocket CreateClient()

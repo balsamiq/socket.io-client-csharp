@@ -271,7 +271,7 @@ namespace SocketIOClient
         {
             Id = openResponse.Sid;
             _pingToken = new CancellationTokenSource();
-            Task.Factory.StartNew(async () =>
+            Task.Run(async () =>
             {
                 await SendNamespaceAsync();
                 while (true)
